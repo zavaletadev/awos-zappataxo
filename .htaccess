@@ -1,0 +1,13 @@
+# Activamos las opciones de ModReWrite
+Options +FollowSymLinks
+Options -MultiViews
+RewriteEngine On
+
+# Solo accedemos por medio de https y sin WWW
+RewriteCond %{HTTPS} !on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+
+# Sobreescribimos el archivo index.php para que no aparezca en la url
+RewriteRule ^ https://zavaletazea.dev%{REQUEST_URI} [R=302,L,NE]
+RewriteCond $1 !^(index.php|static|favicon.ico)
+RewriteRule ^(.*)$ /labs/awos-dapps-zappataxo/index.php?$1 [L] 
