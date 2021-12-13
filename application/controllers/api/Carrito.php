@@ -128,7 +128,8 @@ class Carrito extends CI_Controller {
                 array(
                     'code' => 200, 
                     'data' => $productos_carrito,
-                    'total' => '$'.number_format($total, 2, '.', ',').' MXN'
+                    'total' => number_format($total, 2, '.', ','),
+                    'total_num' => $total
                 )
             );
         }
